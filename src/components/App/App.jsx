@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-// import { ToastContainer} from 'react-toastify';
-// import Searchbar from '../Searchbar/Searchbar';
-// import ImageGallery from './ImageGallery/ImageGallery';
 import Searchbar from 'components/Searchbar';
 import ImageGallery from 'components/ImageGallery';
 
@@ -12,7 +9,6 @@ export default class App extends Component {
   };
 
   handleSearchFormSubmit = keyword => {
-    // console.log(keyword);
     this.setState({ keyword });
   };
 

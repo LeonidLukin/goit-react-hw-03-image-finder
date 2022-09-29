@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import getImagePixabay from '../services/imagesAPI';
 import getImagePixabay from 'services/image-api';
 import Modal from '../Modal/Modal';
 import { Gallery, GaleryTitle } from '../ui/ImageGallery';
-// import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
 import ImageGalleryItem from 'components/ImageGalleryItem';
 import Button from 'components/Button';
 import Loader from 'components/Loader';
-// import { Button } from '../Button/Button';
-// import { LoaderSpiner } from '../Loader/Loader';
 
 export default class ImageGallery extends Component {
     state = {
@@ -22,14 +18,10 @@ export default class ImageGallery extends Component {
     };
 
     componentDidUpdate(prevProps, prevState) {
-        // console.log(prevState.pageNumber);
-
-        // если меняется ключевое слово ИЛИ номер страницы для запроса
         if (
             prevProps.keyword !== this.props.keyword ||
             prevState.pageNumber !== this.state.pageNumber
         ) {
-            // console.log('делаем запросс на сервер!');
             prevProps.keyword !== this.props.keyword
                 ? this.setState({ images: [], status: 'pending', pageNumber: 1 })
                 : this.setState({ status: 'resolved' });
@@ -59,11 +51,6 @@ export default class ImageGallery extends Component {
 
     loadMore = () => {
         this.setState(prevState => ({ pageNumber: prevState.pageNumber + 1 }));
-
-        // window.scrollTo({
-        //   top: this.state.images.length * 260 ,
-        //   behavior: 'smooth',
-        // });
     };
 
     render() {
@@ -81,7 +68,6 @@ export default class ImageGallery extends Component {
                 </GaleryTitle>
             );
         }
-        // {(status === 'pending') && <GaleryTitle><Loader /> Search...</GaleryTitle>}
 
         if (status === 'rejected') {
             return <GaleryTitle>Not found... Try another keyword</GaleryTitle>;
